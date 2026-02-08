@@ -5,6 +5,27 @@
 #include <algorithm>
 using namespace std;
 
+class Matrix {
+public:
+    vector<vector<int>> a; // the 2D vector representing the matrix
+
+    // Overload the + operator
+    Matrix operator + (const Matrix &other) {
+        Matrix result; // will store the sum
+        int n = a.size();       // number of rows
+        int m = a[0].size();    // number of columns
+
+        result.a.resize(n, vector<int>(m, 0)); // initialize with zeros
+
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < m; j++) {
+                result.a[i][j] = a[i][j] + other.a[i][j];
+            }
+        }
+        return result;
+    }
+};
+
 int main () {
    int cases,k;
    cin >> cases;
